@@ -13,7 +13,9 @@ impl<'a> Parse for &'a str {
 }
 
 fn test<'b>(x: &'b str) {
-    let m: Mark<'b> = x._parse();
+    let m: Mark<'b> = Mark { line: &x };
+    let m: Mark<'b> = Mark { line: x };
+    let m: Mark<'b> = x._parse(); // compile error here
 }
 
 fn main() {}
