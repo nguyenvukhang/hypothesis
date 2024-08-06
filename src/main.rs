@@ -27,13 +27,18 @@ pub trait ParseLines<'a> {
 
 impl<'a> ParseLines<'a> for Lines<'a> {
     fn parse(&mut self) -> Vec<Mark<'a>> {
-        let mut marks = vec![];
+        let mut lines = vec![];
         for line in self {
-            if let Some(m) = line.whack() {
-                marks.push(m);
-            }
+            lines.push(Mark { line })
         }
-        marks
+        lines
+        // for line in self {
+        // let x: Option<Mark<'a>> = line.whack();
+        // if let Some(m) = line.whack() {
+        //     marks.push(m);
+        // }
+        // }
+        // vec![]
     }
 
     fn parse_str(&mut self) -> Vec<&str> {
