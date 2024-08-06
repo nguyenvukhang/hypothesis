@@ -3,11 +3,11 @@ pub struct Mark<'a> {
 }
 
 pub trait Parse {
-    fn _parse<'a>(&'a self) -> Mark<'a>;
+    fn _parse(&self) -> Mark;
 }
 
-impl Parse for &str {
-    fn _parse<'a>(&'a self) -> Mark<'a> {
+impl<'a> Parse for &'a str {
+    fn _parse(&self) -> Mark<'a> {
         Mark { line: &self }
     }
 }
