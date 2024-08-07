@@ -2,12 +2,12 @@ pub struct Mark<'a> {
     line: &'a str,
 }
 
-pub trait Parse {
-    fn _parse(&self) -> Mark;
+pub trait Parse<'a> {
+    fn _parse(self) -> Mark<'a>;
 }
 
-impl<'a> Parse for &'a str {
-    fn _parse(&self) -> Mark<'a> {
+impl<'a> Parse<'a> for &'a str {
+    fn _parse(self) -> Mark<'a> {
         Mark { line: &self }
     }
 }
